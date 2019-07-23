@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"capital{ text-align: center; color: rgba(0,0,0,0.7); }\n.",[1],"yz-buttom{ vertical-align: buttom; }\n",],undefined,{path:"./pages/public/signIn.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/public/signIn.wxml') } }));

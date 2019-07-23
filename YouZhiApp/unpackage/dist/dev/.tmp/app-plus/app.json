@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/focus",
+    "pages/index/messages",
+    "pages/index/my",
+    "pages/public/signIn",
+    "pages/public/signUp",
+    "pages/public/verifyemail/verifyemail",
+    "pages/my/userInfo/userInfo"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "邮知",
+    "navigationBarBackgroundColor": "#DFF3E4",
+    "backgroundColor": "#FAFAFA"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "black",
+    "borderStyle": "black",
+    "backgroundColor": "#DFF3E4",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/component.png",
+        "selectedIconPath": "static/componentHL.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/index/focus",
+        "iconPath": "static/api.png",
+        "selectedIconPath": "static/apiHL.png",
+        "text": "发现"
+      },
+      {
+        "pagePath": "pages/index/messages",
+        "iconPath": "static/extui.png",
+        "selectedIconPath": "static/extuiHL.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/index/my",
+        "iconPath": "static/template.png",
+        "selectedIconPath": "static/templateHL.png",
+        "text": "我"
+      }
+    ]
+  },
+  "nvueCompiler": "weex",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "YouZhi-front",
+  "compilerVersion": "2.1.1",
+  "usingComponents": {}
+}

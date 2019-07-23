@@ -1,0 +1,9 @@
+
+.capital{
+	text-align: center;
+	color: rgba(0,0,0,0.7);
+}
+.yz-buttom{
+	vertical-align: buttom;
+}
+
