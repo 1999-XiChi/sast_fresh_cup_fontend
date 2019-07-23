@@ -1,2 +1,0 @@
-setCssToHead([".",[1],"capital{ text-align: center; color: rgba(0,0,0,0.7); }\n.",[1],"btn-primary{ background-color: #528AF1; color: #fff; }\n.",[1],"yz-buttom{ top: calc(); vertical-align: buttom; }\n",],undefined,{path:"./pages/public/signUp.wxss"})();
-document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/public/signUp.wxml') } }));

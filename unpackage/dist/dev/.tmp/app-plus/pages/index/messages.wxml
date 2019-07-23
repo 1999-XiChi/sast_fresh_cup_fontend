@@ -1,1 +1,0 @@
-<view><uni-list vue-id="1" bind:__l="__l" vue-slots="{{['default']}}"><uni-list-item vue-id="{{('2')+','+('1')}}" showArrow="{{false}}" title="标题" note="文本" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" bind:__l="__l"></uni-list-item></uni-list></view>
