@@ -25,19 +25,19 @@
 			}
 		},
 		{
-			"path": "pages/public/signIn",
+			"path": "pages/auth/signIn",
 			"style": {
 				"navigationBarTitleText": "登录"
 			}
 		}
 	    ,{
-            "path" : "pages/public/signUp",
+            "path" : "pages/auth/signUp",
             "style" : {
 				"navigationBarTitleText": "注册"
 			}
         }
         ,{
-            "path" : "pages/public/verifyemail/verifyemail",
+            "path" : "pages/auth/verifyemail",
             "style" : {}
         }
         ,{

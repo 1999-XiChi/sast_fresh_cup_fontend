@@ -15,3 +15,7 @@
 		display: block;
 		border-bottom: 2upx solid #555555;
 	}
+	
+	.text-center{
+		text-align: center;
+	}
