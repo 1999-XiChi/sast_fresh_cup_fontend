@@ -43,7 +43,7 @@
 						password:this.password
 					},
 					success:(result) => {
-						console.log(123)
+
 					}
 				})
 			}

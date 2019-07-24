@@ -49,7 +49,7 @@
 					});
 					return;
 				}
-				uni.redirectTo({url: '/pages/auth/verifyemail?email=' + this.email });
+				uni.navigateTo({url: '/pages/auth/verifyemail?email=' + this.email });
 				uni.request({
 					url:"/register",
 					method:"POST",
@@ -58,8 +58,7 @@
 						password:this.password
 					},
 					success:(result) => {
-						
-						console.log(123)
+
 					}
 				})
 			}
