@@ -1,19 +1,23 @@
 <template>
 	<view>
 		<view class="uni-tab-bar">
+			<zy-search :is-focus="false" :is-block="false" :show-want="false" ></zy-search>
 			<view class="uni-swiper-tab">
 				<view v-for="(tab,index) in tabBars" :key="tab.id" class="swiper-tab-list" :class="tabIndex==index ? 'active' : ''"
 				 :id="tab.id" :data-current="index" @click="tapTab">
-				 <img :src="tab.url"/>
+				 <img :src="tabIndex==index?tab.url1:tab.url2"/>
 				 {{tab.name}}</view>
 			</view>
 			<scroll-view class="list" scroll-y @scrolltolower="loadMore(tab_index)">
-						<yz-content-card class="cards1" v-for="(t,i) in 3" title="问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 问题题目 " note="用户 A"  time="3天前" browse="2500" reply="50" collect="3">
+				    <navigator url="../question/question">
+						<yz-content-card class="cards1" v-for="(t,i) in 3"  title="问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题" note="用户 A"  time="3天前" browse="2500" reply="50" collect="3" thumbnail="../../static/thumbnail.jpg">
 							谢邀。人在美国，刚下飞机。博士学位，月入千万。熟人太多，匿了匿了~这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 
 						</yz-content-card>
-						<view class="uni-tab-bar-loading">
-							  载入中...
-						</view>
+						<yz-content-card class="cards1" v-for="(t,i) in 1"  title="问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题问题" note="用户 A"  time="3天前" browse="2500" reply="50" collect="3" >
+							谢邀。人在美国，刚下飞机。博士学位，月入千万。熟人太多，匿了匿了~这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 这个是内容 
+						</yz-content-card>
+					</navigator>	
+						<uni-load-more :status="status" :content-text="contentText" color="#007aff" />
 			</scroll-view>
 		</view>
 		<uni-fab class="index-fab" ref="fab" :pattern="pattern" :content="content" 
@@ -24,12 +28,13 @@
 <script>
 	import uniFab from '@/components/uni-fab/uni-fab.vue'
 	import yzContentCard from '@/components/youzhi/yz-content-card.vue'
-	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniCard from "@/components/uni-card/uni-card"
+	import uniLoadMore from '@/components/uni-load-more/uni-load-more.vue'
+	import zySearch from '@/components/zy-search/zy-search.vue'
 
 	export default {
 		components: {
-			uniFab, yzContentCard,uniNavBar,uniCard
+			uniFab, yzContentCard,uniCard,uniLoadMore,zySearch
 		},
 		data() {
 			return {
@@ -40,11 +45,13 @@
 				tabBars:[{
 					name: '推荐',
 					id: 'tuijian',
-					url:require('../../static/tuijian.png')
+					url1:require('../../static/tuijian.png'),
+					url2:require('../../static/tuijian2.png')
 				  },{
 					name: '关注',
 					id: 'guanzhu',
-					url:require('../../static/guanzhu.png')
+					url1:require('../../static/guanzhu.png'),
+					url2:require('../../static/guanzhu2.png')
 				  }],
 				pattern: {
 					color: '#7A7E83',
@@ -70,11 +77,28 @@
 						text: '模版',
 						active: false
 					}
-				]
+				],
+				status: 'more',
+				statusTypes: [{
+					value: 'more',
+					text: '加载前',
+				}, {
+					value: 'loading',
+					text: '加载中',
+				}, {
+					value: 'noMore',
+					text: '没有更多',
+				}],
+				contentText: {
+					contentdown: '查看更多',
+					contentrefresh: '加载中',
+					contentnomore: '没有更多'
+				}
 			}
 		},
 		onLoad() {
 			this.newsitems = this.randomfn()
+			// 初始化列表信息
 		},
 		methods: {
 			goDetail(e) {
@@ -88,19 +112,19 @@
 					this.addData(e);
 				}, 1200);
 			},
-			addData(e) {
+			addData(e){
 				
 			},
 			async changeTab(e) {
 				let index = e.target.current;
                 this.tabIndex = index;
-				if (this.newsitems[index].data.length === 0) {
-					this.addData(index)
-				}
-				if (this.isClickChange) {
-					this.isClickChange = false;
-					return;
-				}
+				// if (this.newsitems[index].data.length === 0) {
+				// 	this.addData(index)
+				// }
+				// if (this.isClickChange) {
+				// 	this.isClickChange = false;
+				// 	return;
+				// }
 				let tabBar = await this.getElSize("tab-bar"),
 					tabBarScrollLeft = tabBar.scrollLeft;
 				let width = 0;
@@ -130,11 +154,11 @@
 					}).exec();
 				})
 			},
-			async tapTab(e) { //点击tab-bar
+		    async tapTab(e) { //点击tab-bar
 				let tabIndex = e.target.dataset.current;
-				if (this.newsitems[tabIndex].data.length === 0) {
-					this.addData(tabIndex)
-				}
+				// if (this.newsitems[tabIndex].data.length === 0) {
+				// 	this.addData(tabIndex)
+				// }
 				if (this.tabIndex === tabIndex) {
 					return false;
 				} else {
@@ -183,26 +207,29 @@
 		background-color: #FFFFFF;
 		flex-direction: column;
 		overflow: hidden;
-		height: 100%;
+		height: 100%;	
 	}
 	.uni-tab-bar .list {
 		width: 750upx;
 		height: 100%;
+		
 	}
 	.uni-swiper-tab {
 		width: 100%;
 		line-height: 100upx;
+		height:100upx;
 		border-bottom: 1upx solid #c8c7cc;
-		background-color: #FFFFFF;
 		text-align: center;
 	}
 
 	.swiper-tab-list {
 		width:50%;
+		box-sizing: border-box;
 		font-size: 30upx;
         display:inline-block;
 		text-align: center;
 		color: black;
+		background-color: #FFFFFF;
 	}
 	.swiper-tab-list img{
 		width:65upx;
@@ -215,6 +242,9 @@
 		color: #007AFF;
 		border-bottom: 2upx solid #007AFF;
 	}
+.list{
+	background-color: 	#F5F5F5;
+}
 .uni-tab-bar-loading{
 	padding:20upx 0;
 }
@@ -224,6 +254,7 @@
 	border:1upx solid #DCDCDC;
 	box-shadow:0px 0px 0px #FAFAFA;
 }
+
 
 </style>
 

@@ -1,16 +1,18 @@
 <template>
 	<view class="content-card" @click="onClick">
 		<view v-if="title" class="content-card-header">
-			<view v-if="thumbnail" class="uni-card__header-extra-img-view">
-				<image :src="thumbnail" class="uni-card__header-extra-img" />
-			</view>
 			<view class="uni-card__header-title-text">{{ title }}</view>
 			<view v-if="extra" class="uni-card__header-extra-text">
 			{{ extra }}
 			</view>
 		</view>
 		<view class="content-card-body">
-			<slot />
+			<view :class="thumbnail?'content-slot':'content-slot-entire'">
+				<slot></slot>
+			</view>
+			<view v-if="thumbnail" class="uni-card__header-extra-img-view">
+				<image :src="thumbnail" class="uni-card__header-extra-img" />
+			</view>
 		</view>
 		<view class="content-card-footer">
 		   <view class = 'up'>
@@ -21,10 +23,12 @@
 			   </view>	   
 		   </view> 
 		   <view class = "down">
-			<li>{{browse}} 浏览</li>
-			<li>{{reply}} 回复</li>
-			<li>{{collect}} 收藏</li>
-		  </view>
+			   <view class="flex-wrp" style="flex-direction:row;">
+               <view class="flex-item">{{browse}} 浏览</view>
+               <view class="flex-item">{{reply}} 回复</view>
+               <view class="flex-item">{{collect}} 收藏</view>
+            </view>
+			</view>
 		</view>	
 	</view>
 </template>
@@ -61,7 +65,7 @@
 				type:String,
 				default: ''
 			},
-			thumbnail: {
+			thumbnail:{
 				type: String,
 				default: ''
 			}, // 缩略图
@@ -103,10 +107,7 @@
 	.content-card-body{
 		font-size: 24upx;
 		overflow : hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 4;
-		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;		
 		color: #555555;
 	}
 	.content-card-footer{
@@ -141,18 +142,52 @@
         border-top:1upx solid rgba(0, 0, 0, 0.15);
 		margin-top:10upx;
 	}
-	.down li{
+	.down .flex-item{
 		display:block;
 		float:left;
-		font-size:10upx;
+		font-size:20upx;
 	}	
-	.down li:nth-child(1){
+	.down .flex-item:nth-child(1){
 		padding-right:35upx;
 	}
-	.down li:nth-child(3){
+	.down .flex-item:nth-child(3){
 		float:right;
 		padding-right:5upx;
 	}
+    .content-slot{
+		display:block;
+		float:left;
+		width:59%;
+		text-indent:2em; 
+		margin-right:5upx;
+		display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
+        overflow: hidden;
+	}
+	.content-slot-entire{
+		display:block;
+		float:left;
+		width:100%;
+		text-indent:2em; 
+		margin-right:5upx;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+	}
+    .uni-card__header-extra-img-view{
+	    display:block;
+	    float:right;
+	    width:40%;
+	    height:200upx;
+   }
+	.uni-card__header-extra-img{
+		width:100%;
+		height:200upx;
+		border-radius:20upx;
+		opacity:0.7;
+	}	
 /* 	.uni-card__footer,
 	.uni-card__header {
 		position: relative;
