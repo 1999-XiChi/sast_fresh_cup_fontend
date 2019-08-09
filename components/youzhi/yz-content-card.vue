@@ -5,12 +5,27 @@
 				<image :src="thumbnail" class="uni-card__header-extra-img" />
 			</view>
 			<view class="uni-card__header-title-text">{{ title }}</view>
-			<view v-if="extra" class="uni-card__header-extra-text">{{ extra }}</view>
+			<view v-if="extra" class="uni-card__header-extra-text">
+			{{ extra }}
+			</view>
 		</view>
 		<view class="content-card-body">
 			<slot />
 		</view>
-		<view v-if="note" class="content-card-footer">{{ note }}</view>
+		<view class="content-card-footer">
+		   <view class = 'up'>
+			    <image src="../../static/headProtrait.jpeg"></image>  
+			   {{ note }}
+			   <view class="timeTip">
+			   	{{time}}
+			   </view>	   
+		   </view> 
+		   <view class = "down">
+			<li>{{browse}} 浏览</li>
+			<li>{{reply}} 回复</li>
+			<li>{{collect}} 收藏</li>
+		  </view>
+		</view>	
 	</view>
 </template>
 
@@ -30,6 +45,22 @@
 				type: String,
 				default: ''
 			}, // Tips
+			time: {
+				type: String,
+				default: ''
+			}, 
+			browse:{
+				type:String,
+				default: ''
+			},
+			reply:{
+				type:String,
+				default: ''
+			},
+			collect:{
+				type:String,
+				default: ''
+			},
 			thumbnail: {
 				type: String,
 				default: ''
@@ -48,14 +79,17 @@
 </script>
 
 <style>
+	*{
+		box-sizing:border-box;
+	}
 	.content-card {
-		padding: 16upx;
+		padding: 16upx 16upx 0 16upx;
 		background: #fff;
 		position: relative;
 		flex-direction: column;
 		box-shadow: rgba(0, 0, 0, 0.1) 5px 5px 6px;
 		border-buttom: 1upx solid rgba(0, 0, 0, 0.15);
-		max-height: 300upx;
+		overflow:hidden;
 	}
 
 	.content-card-header{
@@ -73,12 +107,51 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 4;
 		-webkit-box-orient: vertical;
+		color: #555555;
 	}
 	.content-card-footer{
 		justify-content: space-between;
+		overflow: hidden;
 		color: #999;
 		font-size: 24upx;
-		padding-top: 0
+		padding-bottom: 5upx;
+	}
+	.up{
+		height:50upx;
+		line-height:50upx;
+	}
+	.up image{
+		display:block;
+		float:left;
+		width:50upx;
+		height:50upx;
+		border-radius:50upx;
+		margin-right:15upx;
+		}
+	.up .timeTip{
+		float:right;
+		margin-right:5upx;
+	}
+	.down{
+		list-style: none;
+		overflow:hidden;
+		line-height:50upx;
+		background-color: #FFFFFF;
+		color:#3F536E;
+        border-top:1upx solid rgba(0, 0, 0, 0.15);
+		margin-top:10upx;
+	}
+	.down li{
+		display:block;
+		float:left;
+		font-size:10upx;
+	}	
+	.down li:nth-child(1){
+		padding-right:35upx;
+	}
+	.down li:nth-child(3){
+		float:right;
+		padding-right:5upx;
 	}
 /* 	.uni-card__footer,
 	.uni-card__header {

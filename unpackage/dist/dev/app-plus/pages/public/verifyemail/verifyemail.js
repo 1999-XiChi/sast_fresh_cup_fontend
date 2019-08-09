@@ -1,2 +1,0 @@
-setCssToHead([".",[1],"yz-input{ text-align: center; margin: ",[0,200]," ",[0,36]," ",[0,40]," ",[0,36],"; padding: ",[0,16],"; display: block; border-radius: ",[0,12],"; border: ",[0,2]," solid rgba(0,0,0,0.5); }\n",],undefined,{path:"./pages/public/verifyemail/verifyemail.wxss"})();
-document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/public/verifyemail/verifyemail.wxml') } }));

@@ -9,10 +9,10 @@
 			<uni-list-item title="我的回答"/>
 			<uni-list-item title="收藏"/>
 		</uni-list>	
-		<navigator url="/pages/public/signIn" hover-class="navigator-hover">
+		<navigator url="/pages/auth/signIn" hover-class="navigator-hover">
 			<button class="yz-button" type="default">登录</button>
 		</navigator>
-		<navigator url="/pages/public/signUp" hover-class="navigator-hover">
+		<navigator url="/pages/auth/signUp" hover-class="navigator-hover">
 			<button class="yz-button" type="default">注册</button>
 		</navigator>
 	</view>

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "首页",
-  "usingComponents": {
-    "uni-fab": "/components/uni-fab/uni-fab",
-    "yz-content-card": "/components/youzhi/yz-content-card"
-  }
-}
