@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import 'youzhi.css'
+import 'youzhi.scss'
 
 Vue.config.productionTip = false
 

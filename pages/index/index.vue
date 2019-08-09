@@ -215,9 +215,6 @@
 		color: #007AFF;
 		border-bottom: 2upx solid #007AFF;
 	}
-.list{
-	background-color: 	#F5F5F5;
-}
 .uni-tab-bar-loading{
 	padding:20upx 0;
 }

@@ -44,6 +44,14 @@
             "path" : "pages/my/userInfo/userInfo",
             "style" : {}
         }
+		,{
+			"path" : "pages/question/question",
+			"sytle" : {}
+		}
+		,{
+			"path" : "pages/question/newquestion",
+			"sytle" : {}
+		}
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
