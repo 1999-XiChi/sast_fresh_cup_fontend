@@ -177,7 +177,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.content {
 		display: flex;
 		flex-direction: column;

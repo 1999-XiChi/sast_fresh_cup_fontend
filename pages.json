@@ -42,8 +42,15 @@
         }
         ,{
             "path" : "pages/my/userInfo/userInfo",
-            "style" : {}
+            "style" : {
+			}
         }
+		 ,{
+		    "path" : "pages/my/myInfo",
+		    "style" : {
+				"navigationBarTitleText": "个人主页"
+			}
+		}
 		,{
 			"path" : "pages/question/question",
 			"sytle" : {}

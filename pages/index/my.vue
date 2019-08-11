@@ -5,15 +5,17 @@
 		</uni-list>	
 		<view class="example-title">账户相关</view>
 		<uni-list>
-			<uni-list-item title="我的提问"/>
+			<uni-list-item title="我的提问" showBadge badgeText="12"/>
 			<uni-list-item title="我的回答"/>
 			<uni-list-item title="收藏"/>
 		</uni-list>	
+		<view style="text-align: center;">登录柚知，体验更多功能</view>
+		<image src="../../static/headProtrait.jpeg" class="welcome"></image>
 		<navigator url="/pages/auth/signIn" hover-class="navigator-hover">
-			<button class="yz-button" type="default">登录</button>
+			<button class="yz-button" type="default" style="background-color:#52A34C; color:white;">登录</button>
 		</navigator>
 		<navigator url="/pages/auth/signUp" hover-class="navigator-hover">
-			<button class="yz-button" type="default">注册</button>
+			<button class="yz-button" type="warn">注册</button>
 		</navigator>
 	</view>
 </template>
@@ -71,5 +73,12 @@
 		color: #777;
 		margin: 20upx 25upx;
 		position: relative
+	}
+	.welcome{
+		width:300upx;
+		height:300upx;
+		display:block;
+		margin:10upx auto;	
+		border-radius:55upx;
 	}
 </style>
